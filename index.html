@@ -397,78 +397,49 @@
   </main>
 
 <script>
-(function(){
+(function () {
   const shield = document.getElementById("privacyShield");
 
-  function showPrivacyShield(){
+  function showScreenshotWarning() {
     shield.classList.add("show");
-    // Keep the warning visible briefly as a deterrent.
+
     clearTimeout(window.__privacyTimer);
     window.__privacyTimer = setTimeout(() => {
       shield.classList.remove("show");
     }, 5000);
   }
 
-  window.closePrivacyShield = function(){
+  window.closePrivacyShield = function () {
     shield.classList.remove("show");
     clearTimeout(window.__privacyTimer);
   };
 
-  // Prevent common browser actions used to save/copy the page.
-  document.addEventListener("contextmenu", function(e){
-    e.preventDefault();
-    showPrivacyShield();
-  }, {passive:false});
-
-  document.addEventListener("keydown", function(e){
-    const key = String(e.key || "").toLowerCase();
-
-    // Print Screen: browsers cannot reliably cancel an OS-level screenshot,
-    // but this detects the key where the browser receives the event.
-    if (key === "printscreen" || e.code === "PrintScreen"){
+  // Best-effort detection of the Print Screen key.
+  // OS-level screenshot tools may not expose their action to a webpage.
+  window.addEventListener("keydown", function (e) {
+    if (e.key === "PrintScreen" || e.code === "PrintScreen") {
       e.preventDefault();
-      showPrivacyShield();
+      showScreenshotWarning();
 
-      // Best-effort clipboard clear; permission may be denied by the browser.
+      // Best-effort clipboard clear.
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText("").catch(() => {});
       }
-      return;
     }
+  }, true);
 
-    // Common save/print/devtools shortcuts.
-    if (
-      (e.ctrlKey || e.metaKey) &&
-      ["s","p","u"].includes(key)
-    ){
-      e.preventDefault();
-      showPrivacyShield();
-      return;
+  // Some browsers expose the PrintScreen key through keyup instead.
+  window.addEventListener("keyup", function (e) {
+    if (e.key === "PrintScreen" || e.code === "PrintScreen") {
+      showScreenshotWarning();
     }
+  }, true);
 
-    // Ctrl+Shift+I/J and F12 are common inspection shortcuts.
-    if (
-      e.key === "F12" ||
-      ((e.ctrlKey || e.metaKey) && e.shiftKey && ["i","j","c"].includes(key))
-    ){
-      e.preventDefault();
-      showPrivacyShield();
-    }
-  }, {passive:false});
+  // Browser print action is treated as a screenshot/copy warning.
+  window.addEventListener("beforeprint", showScreenshotWarning);
 
-  // If the browser reports that the page is being printed, show the warning.
-  window.addEventListener("beforeprint", showPrivacyShield);
-
-  // Reduce the usefulness of drag/copying images.
-  document.addEventListener("dragstart", function(e){
-    if (e.target && e.target.tagName === "IMG") e.preventDefault();
-  });
-
-  document.addEventListener("selectstart", function(e){
-    if (e.target && e.target.closest && e.target.closest(".thumbnail")) {
-      e.preventDefault();
-    }
-  });
+  // Do not show the warning for normal page interaction.
+  // Right-click/copy blocking has intentionally been removed.
 })();
 </script>
 
