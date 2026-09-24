@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,911 +6,442 @@
 <title>Video Task Instructions</title>
 
 <style>
-:root{
-  --bg:#0d1117;
-  --card:#171c23;
-  --border:#28313d;
-  --text:#f1f3f5;
-  --blue:#6f8fff;
-  --danger-bg:#39242a;
-  --danger-border:#9b4b56;
-  --danger:#ff6473;
-}
-
-*{box-sizing:border-box}
-
-html{background:var(--bg)}
-
-body{
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-  font-size:15px;
-  line-height:1.45;
-  min-height:100vh;
-  user-select:none;
-  -webkit-user-select:none;
-}
-
-img{
-  -webkit-user-drag:none;
-  user-drag:none;
-}
-
-.page{
-  width:100%;
-  max-width:700px;
-  margin:0 auto;
-  padding:22px 0 50px;
-}
-
-.card{
-  width:100%;
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:10px;
-  padding:22px 21px;
-  margin-bottom:14px;
-}
-
-.tag{
-  display:inline-block;
-  background:var(--blue);
-  color:#080b10;
-  border-radius:3px;
-  padding:6px 10px 5px;
-  font-size:13px;
-  font-weight:800;
-  text-transform:uppercase;
-  margin-bottom:13px;
-}
-
-.keywords{
-  list-style:none;
-  padding:0;
-  margin:0;
-}
-
-.keywords li{
-  padding:8px 0;
-  border-bottom:1px solid var(--border);
-  font-size:16px;
-  font-weight:600;
-}
-
-.thumbnail-card{
-  padding-bottom:19px;
-}
-
-.thumbnail{
-  width:100%;
-  display:block;
-  aspect-ratio:16/9;
-  object-fit:cover;
-  border-radius:7px;
-  border:1px solid #303a47;
-  margin:4px 0 17px;
-}
-
-.channel{
-  margin:0;
-  font-size:14px;
-}
-
-.channel strong{
-  color:#fff;
-}
-
-.instructions{
-  padding-top:20px;
-  padding-bottom:17px;
-}
-
-.steps{
-  list-style:none;
-  padding:0;
-  margin:0;
-}
-
-.step{
-  display:grid;
-  grid-template-columns:32px 1fr;
-  column-gap:10px;
-  align-items:start;
-  min-height:45px;
-  padding:8px 0 7px;
-  border-bottom:1px solid var(--border);
-}
-
-.step:last-child{
-  border-bottom:0;
-}
-
-.number{
-  width:29px;
-  height:29px;
-  border-radius:50%;
-  background:var(--blue);
-  color:#0a0d12;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:800;
-}
-
-.step-text{
-  padding-top:2px;
-  font-size:14px;
-  line-height:1.55;
-}
-
-.step-text strong{
-  color:#fff;
-}
-
-.frame-count{
-  display:inline-block;
-  color:#84a2ff;
-  background:#202a42;
-  border:1px solid #4a6196;
-  border-radius:3px;
-  padding:1px 6px;
-}
-
-.warning{
-  margin:14px 0 0;
-  padding:11px 13px;
-  border:1px solid var(--danger-border);
-  border-radius:6px;
-  background:var(--danger-bg);
-  color:var(--danger);
-  font-size:12px;
-}
-
-.footer{
-  text-align:center;
-  color:#4f5965;
-  font-size:11px;
-  margin-top:20px;
-}
-
-/* WATERMARK */
-
-#watermarkLayer{
-  position:fixed;
-  inset:-10%;
-  z-index:5000;
-  pointer-events:none;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  grid-template-rows:repeat(8,1fr);
-  transform:rotate(-22deg);
-  overflow:hidden;
-  opacity:.075;
-}
-
-.watermark{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  white-space:nowrap;
-  color:#fff;
-  font-size:15px;
-  font-weight:700;
-  letter-spacing:1px;
-  text-shadow:0 1px 2px rgba(0,0,0,.8);
-}
-
-/* PRIVACY SHIELD */
-
-#privacyShield{
-  position:fixed;
-  inset:0;
-  z-index:999999;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:24px;
-  background:rgba(13,17,23,.985);
-  color:#fff;
-  text-align:center;
-}
-
-#privacyShield.show{
-  display:flex;
-}
-
-.privacy-box{
-  width:min(520px,100%);
-  background:#171c23;
-  border:1px solid #9b4b56;
-  border-radius:10px;
-  padding:24px 22px;
-  box-shadow:0 15px 50px rgba(0,0,0,.45);
-}
-
-.privacy-box .icon{
-  font-size:30px;
-  margin-bottom:8px;
-}
-
-.privacy-box h2{
-  margin:0 0 8px;
-  font-size:20px;
-}
-
-.privacy-box p{
-  margin:0;
-  color:#ff6473;
-  font-size:14px;
-}
-
-.privacy-close{
-  margin-top:17px;
-  border:0;
-  border-radius:6px;
-  background:#6f8fff;
-  color:#080b10;
-  font-weight:800;
-  padding:9px 18px;
-  cursor:pointer;
-}
-
-/* PROTECTED STATE */
-
-body.protected .page{
-  filter:blur(18px);
-  pointer-events:none;
-}
-
-body.protected{
-  overflow:hidden;
-}
-
-@media(max-width:720px){
-  .page{
-    max-width:100%;
-    padding:14px 12px 40px;
+  :root{
+    --bg:#0d1117;
+    --card:#171c23;
+    --border:#28313d;
+    --text:#f1f3f5;
+    --muted:#8b949e;
+    --blue:#6f8fff;
+    --blue-dark:#5f7ff0;
+    --danger-bg:#39242a;
+    --danger-border:#9b4b56;
+    --danger:#ff6473;
   }
-}
 
-@media(max-width:500px){
-  body{font-size:14px}
+  *{
+    box-sizing:border-box;
+  }
+
+  html{
+    background:var(--bg);
+  }
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:15px;
+    line-height:1.45;
+    min-height:100vh;
+  }
+
+  .page{
+    width:100%;
+    max-width:700px;
+    margin:0 auto;
+    padding:22px 0 50px;
+  }
 
   .card{
-    padding:17px 15px;
-    border-radius:8px;
+    width:100%;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:22px 21px;
+    margin-bottom:14px;
   }
 
   .tag{
-    font-size:11px;
+    display:inline-block;
+    background:var(--blue);
+    color:#080b10;
+    border-radius:3px;
+    padding:6px 10px 5px;
+    font-size:13px;
+    line-height:1;
+    font-weight:800;
+    letter-spacing:.25px;
+    text-transform:uppercase;
+    margin-bottom:13px;
+  }
+
+  .keywords{
+    list-style:none;
+    padding:0;
+    margin:0;
   }
 
   .keywords li{
+    padding:8px 0;
+    border-bottom:1px solid var(--border);
+    font-size:16px;
+    font-weight:600;
+  }
+
+  .keywords li:last-child{
+    border-bottom:0;
+    padding-bottom:0;
+  }
+
+  .thumbnail-card{
+    padding-bottom:19px;
+  }
+
+  .thumbnail{
+    width:100%;
+    display:block;
+    aspect-ratio:16 / 9;
+    object-fit:cover;
+    border-radius:7px;
+    border:1px solid #303a47;
+    margin:4px 0 17px;
+  }
+
+  .channel{
+    margin:0;
     font-size:14px;
+    color:#e6e9ed;
+  }
+
+  .channel strong{
+    color:#fff;
+    font-weight:750;
+  }
+
+  .instructions{
+    padding-top:20px;
+    padding-bottom:17px;
+  }
+
+  .steps{
+    list-style:none;
+    padding:0;
+    margin:0;
   }
 
   .step{
-    grid-template-columns:29px 1fr;
-    column-gap:9px;
+    display:grid;
+    grid-template-columns:32px 1fr;
+    column-gap:10px;
+    align-items:start;
+    min-height:45px;
+    padding:8px 0 7px;
+    border-bottom:1px solid var(--border);
+  }
+
+  .step:last-child{
+    border-bottom:0;
+    padding-bottom:4px;
   }
 
   .number{
-    width:27px;
-    height:27px;
-    font-size:14px;
+    width:29px;
+    height:29px;
+    border-radius:50%;
+    background:var(--blue);
+    color:#0a0d12;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:800;
+    font-size:15px;
+    line-height:1;
+    margin-top:-1px;
   }
 
   .step-text{
-    font-size:13px;
+    padding-top:2px;
+    color:#f0f2f5;
+    font-size:14px;
+    line-height:1.55;
   }
 
-  #watermarkLayer{
-    opacity:.09;
+  .step-text strong{
+    font-weight:750;
+    color:#fff;
   }
 
-  .watermark{
+  .frame-count{
+    display:inline-block;
+    color:#84a2ff;
+    background:#202a42;
+    border:1px solid #4a6196;
+    border-radius:3px;
+    padding:1px 6px;
+    margin-left:3px;
+    font-variant-numeric:tabular-nums;
+  }
+
+  .warning{
+    margin:14px 0 0;
+    padding:11px 13px;
+    border:1px solid var(--danger-border);
+    border-radius:6px;
+    background:var(--danger-bg);
+    color:var(--danger);
+    font-size:12px;
+    line-height:1.4;
+  }
+
+  .warning::before{
+    content:"⚠";
+    margin-right:6px;
     font-size:12px;
   }
-}
 
-@media print{
-  html,
-  body{
-    display:none !important;
+  .footer{
+    text-align:center;
+    color:#4f5965;
+    font-size:11px;
+    margin-top:20px;
   }
-}
+
+  @media(max-width:720px){
+    .page{
+      max-width:100%;
+      padding:14px 12px 40px;
+    }
+  }
+
+  @media(max-width:500px){
+    body{
+      font-size:14px;
+    }
+
+    .card{
+      padding:17px 15px;
+      border-radius:8px;
+    }
+
+    .tag{
+      font-size:11px;
+      padding:6px 8px 5px;
+    }
+
+    .keywords li{
+      font-size:14px;
+    }
+
+    .step{
+      grid-template-columns:29px 1fr;
+      column-gap:9px;
+    }
+
+    .number{
+      width:27px;
+      height:27px;
+      font-size:14px;
+    }
+
+    .step-text{
+      font-size:13px;
+    }
+  }
+
+  /* Privacy / screenshot deterrent */
+  #privacyShield{
+    position:fixed;
+    inset:0;
+    z-index:99999;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+    background:rgba(13,17,23,.97);
+    color:#fff;
+    text-align:center;
+  }
+
+  #privacyShield.show{
+    display:flex;
+  }
+
+  .privacy-box{
+    width:min(520px,100%);
+    background:#171c23;
+    border:1px solid #9b4b56;
+    border-radius:10px;
+    padding:24px 22px;
+    box-shadow:0 15px 50px rgba(0,0,0,.45);
+  }
+
+  .privacy-box .icon{
+    font-size:30px;
+    margin-bottom:8px;
+  }
+
+  .privacy-box h2{
+    margin:0 0 8px;
+    font-size:20px;
+  }
+
+  .privacy-box p{
+    margin:0;
+    color:#ff6473;
+    font-size:14px;
+    line-height:1.55;
+  }
+
+  .privacy-close{
+    margin-top:17px;
+    border:0;
+    border-radius:6px;
+    background:#6f8fff;
+    color:#080b10;
+    font-weight:800;
+    padding:9px 18px;
+    cursor:pointer;
+  }
+
+  @media print{
+    body > *{
+      display:none !important;
+    }
+    body::after{
+      content:"Screenshots/printing are not permitted.";
+      display:block;
+      padding:40px;
+      color:#000;
+      font:700 20px Arial,sans-serif;
+    }
+  }
+
 </style>
 </head>
 
 <body>
 
-<!-- WATERMARK -->
-<div id="watermarkLayer"></div>
-
-<!-- PRIVACY WARNING -->
-<div id="privacyShield" aria-live="assertive">
-
-  <div class="privacy-box">
-
-    <div class="icon">⚠️</div>
-
-    <h2>Screenshot attempt detected</h2>
-
-    <p>
-      Don't try to submit fake screenshots.
-      Fake proof may result in a permanent ban from TimeBucks.
-    </p>
-
-    <button
-      class="privacy-close"
-      type="button"
-      onclick="closePrivacyShield()">
-      I Understand
-    </button>
-
+  <div id="privacyShield" aria-live="assertive">
+    <div class="privacy-box">
+      <div class="icon">⚠️</div>
+      <h2>Screenshot attempt detected</h2>
+      <p>Don't try to submit fake screenshots. Fake proof may result in a permanent ban from TimeBucks.</p>
+      <button class="privacy-close" type="button" onclick="closePrivacyShield()">I Understand</button>
+    </div>
   </div>
 
-</div>
+  <main class="page">
 
-<main class="page">
+    <!-- SEARCH KEYWORD -->
+    <section class="card">
+      <div class="tag">Search for one of these keywords on YouTube:</div>
 
-  <!-- SEARCH KEYWORD -->
+      <ul class="keywords">
+        <li>hostinger coupon code</li>
+      </ul>
+    </section>
 
-  <section class="card">
+    <!-- THUMBNAIL -->
+    <section class="card thumbnail-card">
+      <div class="tag">Look for this thumbnail in the search results:</div>
 
-    <div class="tag">
-      Search for one of these keywords on YouTube:
-    </div>
+      <!-- Put thumb.jpg in the same GitHub folder as index.html -->
+      <img class="thumbnail" src="thumb.jpg" alt="Video thumbnail">
 
-    <ul class="keywords">
-      <li>hostinger coupon code</li>
-    </ul>
+      <p class="channel">
+        YT Channel: <strong>Deal Drops</strong>
+      </p>
+    </section>
 
-  </section>
+    <!-- INSTRUCTIONS -->
+    <section class="card instructions">
+      <div class="tag">Instructions:</div>
 
+      <ol class="steps">
+        <li class="step">
+          <span class="number">1</span>
+          <span class="step-text">
+            Search for one of the keywords above on <strong>YouTube.</strong>
+          </span>
+        </li>
 
-  <!-- THUMBNAIL -->
+        <li class="step">
+          <span class="number">2</span>
+          <span class="step-text">
+            Find the video with the thumbnail shown above from <strong>Deal Drops</strong> and click it.
+          </span>
+        </li>
 
-  <section class="card thumbnail-card">
+        <li class="step">
+          <span class="number">3</span>
+          <span class="step-text">
+            Right-click on the video player and enable <strong>“Stats for nerds”</strong> before pressing play.
+          </span>
+        </li>
 
-    <div class="tag">
-      Look for this thumbnail in the search results:
-    </div>
+        <li class="step">
+          <span class="number">4</span>
+          <span class="step-text">
+            Watch the video for at least <strong>2 minutes.</strong> Your <strong>“Stats for nerds”</strong> frame count must be over:
+            <span class="frame-count">7,200</span>
+          </span>
+        </li>
 
-    <img
-      class="thumbnail"
-      src="thumb.jpg"
-      alt="Video thumbnail">
+        <li class="step">
+          <span class="number">5</span>
+          <span class="step-text">
+            Upload all required screenshots as proof.
+          </span>
+        </li>
+      </ol>
 
-    <p class="channel">
-      YT Channel:
-      <strong>Deal Drops</strong>
-    </p>
+      <div class="warning">
+        If you watch less than 2 minutes, you will not be paid.
+      </div>
+    </section>
 
-  </section>
+    <div class="footer">Hostinger coupon code · 2:12</div>
 
-
-  <!-- INSTRUCTIONS -->
-
-  <section class="card instructions">
-
-    <div class="tag">
-      Instructions:
-    </div>
-
-    <ol class="steps">
-
-      <li class="step">
-        <span class="number">1</span>
-        <span class="step-text">
-          Search for one of the keywords above on
-          <strong>YouTube.</strong>
-        </span>
-      </li>
-
-      <li class="step">
-        <span class="number">2</span>
-        <span class="step-text">
-          Find the video with the thumbnail shown above from
-          <strong>Deal Drops</strong> and click it.
-        </span>
-      </li>
-
-      <li class="step">
-        <span class="number">3</span>
-        <span class="step-text">
-          Right-click on the video player and enable
-          <strong>“Stats for nerds”</strong>
-          before pressing play.
-        </span>
-      </li>
-
-      <li class="step">
-        <span class="number">4</span>
-        <span class="step-text">
-          Watch the video for at least
-          <strong>2 minutes.</strong>
-          Your <strong>“Stats for nerds”</strong>
-          frame count must be over:
-          <span class="frame-count">7,200</span>
-        </span>
-      </li>
-
-      <li class="step">
-        <span class="number">5</span>
-        <span class="step-text">
-          Upload all required screenshots as proof.
-        </span>
-      </li>
-
-    </ol>
-
-    <div class="warning">
-      If you watch less than 2 minutes, you will not be paid.
-    </div>
-
-  </section>
-
-  <div class="footer">
-    Hostinger coupon code · 2:12
-  </div>
-
-</main>
-
+  </main>
 
 <script>
+(function () {
+  const shield = document.getElementById("privacyShield");
 
-/* =========================================================
-   USER + SESSION WATERMARK
-========================================================= */
+  function showScreenshotWarning() {
+    shield.classList.add("show");
 
-(function(){
-
-  const params =
-    new URLSearchParams(
-      window.location.search
-    );
-
-  let userId =
-    params.get("user");
-
-
-  /*
-   * If URL doesn't contain ?user=
-   * generate a temporary ID.
-   */
-
-  if(!userId){
-
-    userId =
-      String(
-        Math.floor(
-          10000 +
-          Math.random() * 90000
-        )
-      );
-
+    clearTimeout(window.__privacyTimer);
+    window.__privacyTimer = setTimeout(() => {
+      shield.classList.remove("show");
+    }, 5000);
   }
 
-
-  /*
-   * Generate unique session ID
-   */
-
-  const sessionId =
-    Math.random()
-      .toString(36)
-      .substring(2,8)
-      .toUpperCase();
-
-
-  /*
-   * Current date
-   */
-
-  const now =
-    new Date();
-
-
-  const dateString =
-    now.toLocaleDateString(
-      "en-GB",
-      {
-        day:"2-digit",
-        month:"short",
-        year:"numeric"
-      }
-    );
-
-
-  /*
-   * Watermark
-   */
-
-  const watermarkText =
-    "USER: " +
-    userId +
-    " • SESSION: " +
-    sessionId +
-    " • " +
-    dateString;
-
-
-  const watermarkLayer =
-    document.getElementById(
-      "watermarkLayer"
-    );
-
-
-  /*
-   * Create 24 watermarks
-   */
-
-  for(let i=0;i<24;i++){
-
-    const watermark =
-      document.createElement("div");
-
-    watermark.className =
-      "watermark";
-
-    watermark.textContent =
-      watermarkText;
-
-    watermarkLayer.appendChild(
-      watermark
-    );
-
-  }
-
-
-  /*
-   * Store security information
-   */
-
-  window.taskSecurity = {
-
-    userId:userId,
-
-    sessionId:sessionId,
-
-    createdAt:now.toISOString()
-
+  window.closePrivacyShield = function () {
+    shield.classList.remove("show");
+    clearTimeout(window.__privacyTimer);
   };
 
-})();
-
-
-/* =========================================================
-   SCREENSHOT PROTECTION
-========================================================= */
-
-(function(){
-
-  const shield =
-    document.getElementById(
-      "privacyShield"
-    );
-
-  let shieldTimer = null;
-
-  let lastWarning = 0;
-
-
-  function showScreenshotWarning(){
-
-    const now = Date.now();
-
-    if(now - lastWarning < 700){
-      return;
-    }
-
-    lastWarning = now;
-
-    document.body.classList.add(
-      "protected"
-    );
-
-    shield.classList.add(
-      "show"
-    );
-
-    clearTimeout(shieldTimer);
-
-    shieldTimer =
-      setTimeout(function(){
-
-        shield.classList.remove(
-          "show"
-        );
-
-        document.body.classList.remove(
-          "protected"
-        );
-
-      },5000);
-
-  }
-
-
-  window.closePrivacyShield =
-    function(){
-
-      shield.classList.remove(
-        "show"
-      );
-
-      document.body.classList.remove(
-        "protected"
-      );
-
-      clearTimeout(shieldTimer);
-
-    };
-
-
-  /*
-   * Print Screen
-   */
-
-  function detectPrintScreen(e){
-
-    if(
-      e.key === "PrintScreen" ||
-      e.code === "PrintScreen"
-    ){
-
+  // Best-effort detection of the Print Screen key.
+  // OS-level screenshot tools may not expose their action to a webpage.
+  window.addEventListener("keydown", function (e) {
+    if (e.key === "PrintScreen" || e.code === "PrintScreen") {
       e.preventDefault();
-
-      e.stopPropagation();
-
       showScreenshotWarning();
 
+      // Best-effort clipboard clear.
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText("").catch(() => {});
+      }
     }
-
-  }
-
-
-  window.addEventListener(
-    "keydown",
-    detectPrintScreen,
-    true
-  );
-
-  window.addEventListener(
-    "keyup",
-    detectPrintScreen,
-    true
-  );
-
-
-  /*
-   * Keyboard protection
-   */
-
-  window.addEventListener(
-    "keydown",
-    function(e){
-
-      const key =
-        String(e.key).toLowerCase();
-
-
-      /* Ctrl + P */
-
-      if(
-        e.ctrlKey &&
-        key === "p"
-      ){
-
-        e.preventDefault();
-
-        showScreenshotWarning();
-
-      }
-
-
-      /* F12 */
-
-      if(e.key === "F12"){
-
-        e.preventDefault();
-
-        showScreenshotWarning();
-
-      }
-
-
-      /* Ctrl + Shift + I */
-
-      if(
-        e.ctrlKey &&
-        e.shiftKey &&
-        key === "i"
-      ){
-
-        e.preventDefault();
-
-        showScreenshotWarning();
-
-      }
-
-
-      /* Ctrl + Shift + J */
-
-      if(
-        e.ctrlKey &&
-        e.shiftKey &&
-        key === "j"
-      ){
-
-        e.preventDefault();
-
-        showScreenshotWarning();
-
-      }
-
-
-      /* Ctrl + Shift + C */
-
-      if(
-        e.ctrlKey &&
-        e.shiftKey &&
-        key === "c"
-      ){
-
-        e.preventDefault();
-
-        showScreenshotWarning();
-
-      }
-
-    },
-    true
-  );
-
-
-  /*
-   * Print
-   */
-
-  window.addEventListener(
-    "beforeprint",
-    showScreenshotWarning
-  );
-
-
-  /*
-   * Right click
-   */
-
-  document.addEventListener(
-    "contextmenu",
-    function(e){
-
-      e.preventDefault();
-
-    },
-    true
-  );
-
-
-  /*
-   * Copy
-   */
-
-  document.addEventListener(
-    "copy",
-    function(e){
-
-      e.preventDefault();
-
-    },
-    true
-  );
-
-
-  /*
-   * Cut
-   */
-
-  document.addEventListener(
-    "cut",
-    function(e){
-
-      e.preventDefault();
-
-    },
-    true
-  );
-
-
-  /*
-   * Drag
-   */
-
-  document.addEventListener(
-    "dragstart",
-    function(e){
-
-      e.preventDefault();
-
-    },
-    true
-  );
-
-
-  /*
-   * Hide page when tab/window loses focus
-   */
-
-  document.addEventListener(
-    "visibilitychange",
-    function(){
-
-      if(document.hidden){
-
-        document.body.classList.add(
-          "protected"
-        );
-
-      }else{
-
-        setTimeout(function(){
-
-          document.body.classList.remove(
-            "protected"
-          );
-
-        },350);
-
-      }
-
+  }, true);
+
+  // Some browsers expose the PrintScreen key through keyup instead.
+  window.addEventListener("keyup", function (e) {
+    if (e.key === "PrintScreen" || e.code === "PrintScreen") {
+      showScreenshotWarning();
     }
-  );
+  }, true);
 
+  // Browser print action is treated as a screenshot/copy warning.
+  window.addEventListener("beforeprint", showScreenshotWarning);
 
-  /*
-   * Window blur
-   */
-
-  window.addEventListener(
-    "blur",
-    function(){
-
-      document.body.classList.add(
-        "protected"
-      );
-
-    }
-  );
-
-
-  /*
-   * Window focus
-   */
-
-  window.addEventListener(
-    "focus",
-    function(){
-
-      setTimeout(function(){
-
-        document.body.classList.remove(
-          "protected"
-        );
-
-      },350);
-
-    }
-  );
-
+  // Do not show the warning for normal page interaction.
+  // Right-click/copy blocking has intentionally been removed.
 })();
-
 </script>
 
 </body>
 </html>
-```
