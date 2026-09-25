@@ -19,169 +19,194 @@
     --danger:#ff6473;
   }
 
-  *{
-    box-sizing:border-box;
-  }
+  *{box-sizing:border-box}
+
+  html{background:var(--bg)}
 
   body{
     margin:0;
-    min-height:100vh;
-    background:linear-gradient(135deg,#0d1117,#121822);
+    background:var(--bg);
     color:var(--text);
-    font-family:Arial,Helvetica,sans-serif;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:15px;
+    line-height:1.45;
+    min-height:100vh;
   }
 
   .page{
-    width:min(900px,calc(100% - 32px));
+    width:100%;
+    max-width:700px;
     margin:0 auto;
-    padding:28px 0 36px;
+    padding:22px 0 50px;
   }
 
   .card{
+    width:100%;
     background:var(--card);
     border:1px solid var(--border);
-    border-radius:16px;
-    padding:24px;
-    margin-bottom:18px;
-    box-shadow:0 10px 28px rgba(0,0,0,.22);
-  }
-
-  .hero{
-    text-align:center;
-  }
-
-  .hero h1{
-    margin:0;
-    color:#fff;
-    font-size:clamp(26px,5vw,42px);
-    letter-spacing:.4px;
-  }
-
-  .hero p{
-    color:var(--muted);
-    margin:12px 0 0;
-    font-size:16px;
+    border-radius:10px;
+    padding:22px 21px;
+    margin-bottom:14px;
   }
 
   .tag{
     display:inline-block;
-    background:#253249;
-    color:#bcd0ff;
-    border:1px solid #3d5280;
-    border-radius:999px;
-    padding:7px 13px;
+    background:var(--blue);
+    color:#080b10;
+    border-radius:3px;
+    padding:6px 10px 5px;
     font-size:13px;
-    font-weight:700;
-    margin-bottom:16px;
+    line-height:1;
+    font-weight:800;
+    letter-spacing:.25px;
+    text-transform:uppercase;
+    margin-bottom:13px;
   }
 
   .keywords{
-    display:grid;
-    gap:12px;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    margin-top:10px;
-  }
-
-  .keyword{
-    background:#111822;
-    border:1px solid var(--border);
-    border-radius:10px;
-    padding:14px;
-    color:#dce7ff;
-    font-weight:700;
-  }
-
-  .thumbnail{
-    display:block;
-    width:100%;
-    max-width:680px;
-    margin:14px auto 16px;
-    border-radius:12px;
-    border:1px solid var(--border);
-  }
-
-  .channel{
-    text-align:center;
-    color:var(--muted);
+    list-style:none;
+    padding:0;
     margin:0;
   }
 
+  .keywords li{
+    padding:8px 0;
+    border-bottom:1px solid var(--border);
+    font-size:16px;
+    font-weight:600;
+  }
+
+  .keywords li:last-child{
+    border-bottom:0;
+    padding-bottom:0;
+  }
+
+  .thumbnail-card{padding-bottom:19px}
+
+  .thumbnail{
+    width:100%;
+    display:block;
+    aspect-ratio:16 / 9;
+    object-fit:cover;
+    border-radius:7px;
+    border:1px solid #303a47;
+    margin:4px 0 17px;
+  }
+
+  .channel{
+    margin:0;
+    font-size:14px;
+    color:#e6e9ed;
+  }
+
+  .channel strong{
+    color:#fff;
+    font-weight:750;
+  }
+
   .instructions{
-    position:relative;
+    padding-top:20px;
+    padding-bottom:17px;
   }
 
   .steps{
     list-style:none;
-    margin:0;
     padding:0;
-    display:grid;
-    gap:12px;
+    margin:0;
   }
 
   .step{
-    display:flex;
-    gap:14px;
-    align-items:flex-start;
-    background:#121922;
-    border:1px solid var(--border);
-    border-radius:12px;
-    padding:15px;
+    display:grid;
+    grid-template-columns:32px 1fr;
+    column-gap:10px;
+    align-items:start;
+    min-height:45px;
+    padding:8px 0 7px;
+    border-bottom:1px solid var(--border);
+  }
+
+  .step:last-child{
+    border-bottom:0;
+    padding-bottom:4px;
   }
 
   .number{
-    flex:0 0 30px;
-    width:30px;
-    height:30px;
+    width:29px;
+    height:29px;
     border-radius:50%;
-    display:grid;
-    place-items:center;
     background:var(--blue);
-    color:#fff;
+    color:#0a0d12;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     font-weight:800;
+    font-size:15px;
+    line-height:1;
+    margin-top:-1px;
   }
 
   .step-text{
+    padding-top:2px;
+    color:#f0f2f5;
+    font-size:14px;
     line-height:1.55;
-    color:#e5eaf1;
+  }
+
+  .step-text strong{
+    font-weight:750;
+    color:#fff;
   }
 
   .frame-count{
     display:inline-block;
-    margin-left:5px;
-    background:#253249;
-    color:#c8d7ff;
-    border-radius:6px;
-    padding:2px 7px;
-    font-weight:800;
+    color:#84a2ff;
+    background:#202a42;
+    border:1px solid #4a6196;
+    border-radius:3px;
+    padding:1px 6px;
+    margin-left:3px;
+    font-variant-numeric:tabular-nums;
   }
 
   .warning{
-    margin-top:16px;
-    padding:14px;
+    margin:14px 0 0;
+    padding:11px 13px;
+    border:1px solid var(--danger-border);
+    border-radius:6px;
     background:var(--danger-bg);
     color:var(--danger);
-    border:1px solid var(--danger-border);
-    border-radius:10px;
-    font-weight:700;
-    text-align:center;
+    font-size:12px;
+    line-height:1.4;
+  }
+
+  .warning::before{
+    content:"⚠";
+    margin-right:6px;
+    font-size:12px;
   }
 
   .footer{
-    color:var(--muted);
     text-align:center;
-    font-size:13px;
-    padding:8px;
+    color:#4f5965;
+    font-size:11px;
+    margin-top:20px;
   }
 
-  @media(max-width:600px){
+  @media(max-width:720px){
     .page{
-      width:min(100% - 20px,900px);
-      padding-top:10px;
+      max-width:100%;
+      padding:14px 12px 40px;
     }
+  }
 
-    .card{
-      padding:18px;
-    }
+  @media(max-width:500px){
+    body{font-size:14px}
+    .card{padding:17px 15px;border-radius:8px}
+    .tag{font-size:11px;padding:6px 8px 5px}
+    .keywords li{font-size:14px}
+    .step{grid-template-columns:29px 1fr;column-gap:9px}
+    .number{width:27px;height:27px;font-size:14px}
+    .step-text{font-size:13px}
   }
 </style>
 </head>
@@ -189,22 +214,16 @@
 <body>
   <main class="page">
 
-    <section class="card hero">
-      <h1>SMARTSCOUT COUPON CODE</h1>
-      <p>Follow the instructions below to complete the video task.</p>
+    <section class="card">
+      <div class="tag">Search for this keyword on YouTube:</div>
+
+      <ul class="keywords">
+        <li>smartscout coupon code</li>
+      </ul>
     </section>
 
-    <section class="card">
-      <div class="tag">Search Keywords</div>
-
-      <div class="keywords">
-        <div class="keyword">hostinger coupon code</div>
-        <div class="keyword">smartscout coupon code</div>
-      </div>
-    </section>
-
-    <section class="card">
-      <div class="tag">Video</div>
+    <section class="card thumbnail-card">
+      <div class="tag">Look for this thumbnail in the search results:</div>
 
       <img class="thumbnail" src="thumb.jpg" alt="Video thumbnail">
 
@@ -220,7 +239,7 @@
         <li class="step">
           <span class="number">1</span>
           <span class="step-text">
-            Search for one of the keywords above on <strong>YouTube.</strong>
+            Search for the keyword above on <strong>YouTube.</strong>
           </span>
         </li>
 
@@ -241,7 +260,8 @@
         <li class="step">
           <span class="number">4</span>
           <span class="step-text">
-            Watch the video for at least <strong>3 minutes.</strong> Your <strong>“Stats for nerds”</strong> frame count must be over:
+            Watch the video for at least <strong>3 minutes.</strong> Your
+            <strong>“Stats for nerds”</strong> frame count must be over:
             <span class="frame-count">7,200</span>
           </span>
         </li>
@@ -262,34 +282,5 @@
     <div class="footer">SMARTSCOUT COUPON CODE · 3:00</div>
 
   </main>
-
-<script>
-(function () {
-  const shield = document.getElementById("privacyShield");
-
-  function showScreenshotWarning() {
-    if (shield) {
-      shield.classList.add("show");
-    }
-  }
-
-  document.addEventListener("keyup", function (event) {
-    if (
-      event.key === "PrintScreen" ||
-      (event.ctrlKey && event.shiftKey && event.key.toLowerCase() === "s")
-    ) {
-      showScreenshotWarning();
-    }
-  });
-
-  window.addEventListener("blur", function () {
-    setTimeout(function () {
-      if (document.visibilityState === "hidden") {
-        showScreenshotWarning();
-      }
-    }, 100);
-  });
-})();
-</script>
 </body>
 </html>
