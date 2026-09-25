@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Video Task Instructions</title>
+<title>SMARTSCOUT COUPON CODE</title>
 
 <style>
   :root{
@@ -23,321 +23,189 @@
     box-sizing:border-box;
   }
 
-  html{
-    background:var(--bg);
-  }
-
   body{
     margin:0;
-    background:var(--bg);
-    color:var(--text);
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    font-size:15px;
-    line-height:1.45;
     min-height:100vh;
+    background:linear-gradient(135deg,#0d1117,#121822);
+    color:var(--text);
+    font-family:Arial,Helvetica,sans-serif;
   }
 
   .page{
-    width:100%;
-    max-width:700px;
+    width:min(900px,calc(100% - 32px));
     margin:0 auto;
-    padding:22px 0 50px;
+    padding:28px 0 36px;
   }
 
   .card{
-    width:100%;
     background:var(--card);
     border:1px solid var(--border);
-    border-radius:10px;
-    padding:22px 21px;
-    margin-bottom:14px;
+    border-radius:16px;
+    padding:24px;
+    margin-bottom:18px;
+    box-shadow:0 10px 28px rgba(0,0,0,.22);
+  }
+
+  .hero{
+    text-align:center;
+  }
+
+  .hero h1{
+    margin:0;
+    color:#fff;
+    font-size:clamp(26px,5vw,42px);
+    letter-spacing:.4px;
+  }
+
+  .hero p{
+    color:var(--muted);
+    margin:12px 0 0;
+    font-size:16px;
   }
 
   .tag{
     display:inline-block;
-    background:var(--blue);
-    color:#080b10;
-    border-radius:3px;
-    padding:6px 10px 5px;
+    background:#253249;
+    color:#bcd0ff;
+    border:1px solid #3d5280;
+    border-radius:999px;
+    padding:7px 13px;
     font-size:13px;
-    line-height:1;
-    font-weight:800;
-    letter-spacing:.25px;
-    text-transform:uppercase;
-    margin-bottom:13px;
+    font-weight:700;
+    margin-bottom:16px;
   }
 
   .keywords{
-    list-style:none;
-    padding:0;
-    margin:0;
+    display:grid;
+    gap:12px;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    margin-top:10px;
   }
 
-  .keywords li{
-    padding:8px 0;
-    border-bottom:1px solid var(--border);
-    font-size:16px;
-    font-weight:600;
-  }
-
-  .keywords li:last-child{
-    border-bottom:0;
-    padding-bottom:0;
-  }
-
-  .thumbnail-card{
-    padding-bottom:19px;
+  .keyword{
+    background:#111822;
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:14px;
+    color:#dce7ff;
+    font-weight:700;
   }
 
   .thumbnail{
-    width:100%;
     display:block;
-    aspect-ratio:16 / 9;
-    object-fit:cover;
-    border-radius:7px;
-    border:1px solid #303a47;
-    margin:4px 0 17px;
+    width:100%;
+    max-width:680px;
+    margin:14px auto 16px;
+    border-radius:12px;
+    border:1px solid var(--border);
   }
 
   .channel{
+    text-align:center;
+    color:var(--muted);
     margin:0;
-    font-size:14px;
-    color:#e6e9ed;
-  }
-
-  .channel strong{
-    color:#fff;
-    font-weight:750;
   }
 
   .instructions{
-    padding-top:20px;
-    padding-bottom:17px;
+    position:relative;
   }
 
   .steps{
     list-style:none;
-    padding:0;
     margin:0;
+    padding:0;
+    display:grid;
+    gap:12px;
   }
 
   .step{
-    display:grid;
-    grid-template-columns:32px 1fr;
-    column-gap:10px;
-    align-items:start;
-    min-height:45px;
-    padding:8px 0 7px;
-    border-bottom:1px solid var(--border);
-  }
-
-  .step:last-child{
-    border-bottom:0;
-    padding-bottom:4px;
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    background:#121922;
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:15px;
   }
 
   .number{
-    width:29px;
-    height:29px;
+    flex:0 0 30px;
+    width:30px;
+    height:30px;
     border-radius:50%;
+    display:grid;
+    place-items:center;
     background:var(--blue);
-    color:#0a0d12;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    color:#fff;
     font-weight:800;
-    font-size:15px;
-    line-height:1;
-    margin-top:-1px;
   }
 
   .step-text{
-    padding-top:2px;
-    color:#f0f2f5;
-    font-size:14px;
     line-height:1.55;
-  }
-
-  .step-text strong{
-    font-weight:750;
-    color:#fff;
+    color:#e5eaf1;
   }
 
   .frame-count{
     display:inline-block;
-    color:#84a2ff;
-    background:#202a42;
-    border:1px solid #4a6196;
-    border-radius:3px;
-    padding:1px 6px;
-    margin-left:3px;
-    font-variant-numeric:tabular-nums;
+    margin-left:5px;
+    background:#253249;
+    color:#c8d7ff;
+    border-radius:6px;
+    padding:2px 7px;
+    font-weight:800;
   }
 
   .warning{
-    margin:14px 0 0;
-    padding:11px 13px;
-    border:1px solid var(--danger-border);
-    border-radius:6px;
+    margin-top:16px;
+    padding:14px;
     background:var(--danger-bg);
     color:var(--danger);
-    font-size:12px;
-    line-height:1.4;
-  }
-
-  .warning::before{
-    content:"⚠";
-    margin-right:6px;
-    font-size:12px;
+    border:1px solid var(--danger-border);
+    border-radius:10px;
+    font-weight:700;
+    text-align:center;
   }
 
   .footer{
+    color:var(--muted);
     text-align:center;
-    color:#4f5965;
-    font-size:11px;
-    margin-top:20px;
+    font-size:13px;
+    padding:8px;
   }
 
-  @media(max-width:720px){
+  @media(max-width:600px){
     .page{
-      max-width:100%;
-      padding:14px 12px 40px;
-    }
-  }
-
-  @media(max-width:500px){
-    body{
-      font-size:14px;
+      width:min(100% - 20px,900px);
+      padding-top:10px;
     }
 
     .card{
-      padding:17px 15px;
-      border-radius:8px;
-    }
-
-    .tag{
-      font-size:11px;
-      padding:6px 8px 5px;
-    }
-
-    .keywords li{
-      font-size:14px;
-    }
-
-    .step{
-      grid-template-columns:29px 1fr;
-      column-gap:9px;
-    }
-
-    .number{
-      width:27px;
-      height:27px;
-      font-size:14px;
-    }
-
-    .step-text{
-      font-size:13px;
+      padding:18px;
     }
   }
-
-  /* Privacy / screenshot deterrent */
-  #privacyShield{
-    position:fixed;
-    inset:0;
-    z-index:99999;
-    display:none;
-    align-items:center;
-    justify-content:center;
-    padding:24px;
-    background:rgba(13,17,23,.97);
-    color:#fff;
-    text-align:center;
-  }
-
-  #privacyShield.show{
-    display:flex;
-  }
-
-  .privacy-box{
-    width:min(520px,100%);
-    background:#171c23;
-    border:1px solid #9b4b56;
-    border-radius:10px;
-    padding:24px 22px;
-    box-shadow:0 15px 50px rgba(0,0,0,.45);
-  }
-
-  .privacy-box .icon{
-    font-size:30px;
-    margin-bottom:8px;
-  }
-
-  .privacy-box h2{
-    margin:0 0 8px;
-    font-size:20px;
-  }
-
-  .privacy-box p{
-    margin:0;
-    color:#ff6473;
-    font-size:14px;
-    line-height:1.55;
-  }
-
-  .privacy-close{
-    margin-top:17px;
-    border:0;
-    border-radius:6px;
-    background:#6f8fff;
-    color:#080b10;
-    font-weight:800;
-    padding:9px 18px;
-    cursor:pointer;
-  }
-
-  @media print{
-    body > *{
-      display:none !important;
-    }
-    body::after{
-      content:"Screenshots/printing are not permitted.";
-      display:block;
-      padding:40px;
-      color:#000;
-      font:700 20px Arial,sans-serif;
-    }
-  }
-
 </style>
 </head>
 
 <body>
-
-  <div id="privacyShield" class="show" aria-live="assertive">
-    <div class="privacy-box">
-      <div class="icon">⚠️</div>
-      <h2>Screenshot attempt detected</h2>
-      <p>If you submit a screenshot of this landing page to TimeBucks, you will be permanently blocked from the TimeBucks website.</p>
-      <button class="privacy-close" type="button" onclick="closePrivacyShield()">Understood</button>
-    </div>
-  </div>
-
   <main class="page">
 
-    <!-- SEARCH KEYWORD -->
-    <section class="card">
-      <div class="tag">Search for one of these keywords on YouTube:</div>
-
-      <ul class="keywords">
-        <li>hostinger coupon code</li>
-      </ul>
+    <section class="card hero">
+      <h1>SMARTSCOUT COUPON CODE</h1>
+      <p>Follow the instructions below to complete the video task.</p>
     </section>
 
-    <!-- THUMBNAIL -->
-    <section class="card thumbnail-card">
-      <div class="tag">Look for this thumbnail in the search results:</div>
+    <section class="card">
+      <div class="tag">Search Keywords</div>
 
-      <!-- Put thumb.jpg in the same GitHub folder as index.html -->
+      <div class="keywords">
+        <div class="keyword">hostinger coupon code</div>
+        <div class="keyword">smartscout coupon code</div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="tag">Video</div>
+
       <img class="thumbnail" src="thumb.jpg" alt="Video thumbnail">
 
       <p class="channel">
@@ -345,7 +213,6 @@
       </p>
     </section>
 
-    <!-- INSTRUCTIONS -->
     <section class="card instructions">
       <div class="tag">Instructions:</div>
 
@@ -374,7 +241,7 @@
         <li class="step">
           <span class="number">4</span>
           <span class="step-text">
-            Watch the video for at least <strong>2 minutes.</strong> Your <strong>“Stats for nerds”</strong> frame count must be over:
+            Watch the video for at least <strong>3 minutes.</strong> Your <strong>“Stats for nerds”</strong> frame count must be over:
             <span class="frame-count">7,200</span>
           </span>
         </li>
@@ -388,11 +255,11 @@
       </ol>
 
       <div class="warning">
-        If you watch less than 2 minutes, you will not be paid.
+        If you watch less than 3 minutes, you will not be paid.
       </div>
     </section>
 
-    <div class="footer">Hostinger coupon code · 2:12</div>
+    <div class="footer">SMARTSCOUT COUPON CODE · 3:00</div>
 
   </main>
 
@@ -401,47 +268,28 @@
   const shield = document.getElementById("privacyShield");
 
   function showScreenshotWarning() {
-    shield.classList.add("show");
-
-    clearTimeout(window.__privacyTimer);
-    window.__privacyTimer = setTimeout(() => {
-      shield.classList.remove("show");
-    }, 5000);
+    if (shield) {
+      shield.classList.add("show");
+    }
   }
 
-  window.closePrivacyShield = function () {
-    shield.classList.remove("show");
-    clearTimeout(window.__privacyTimer);
-  };
-
-  // Best-effort detection of the Print Screen key.
-  // OS-level screenshot tools may not expose their action to a webpage.
-  window.addEventListener("keydown", function (e) {
-    if (e.key === "PrintScreen" || e.code === "PrintScreen") {
-      e.preventDefault();
+  document.addEventListener("keyup", function (event) {
+    if (
+      event.key === "PrintScreen" ||
+      (event.ctrlKey && event.shiftKey && event.key.toLowerCase() === "s")
+    ) {
       showScreenshotWarning();
+    }
+  });
 
-      // Best-effort clipboard clear.
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText("").catch(() => {});
+  window.addEventListener("blur", function () {
+    setTimeout(function () {
+      if (document.visibilityState === "hidden") {
+        showScreenshotWarning();
       }
-    }
-  }, true);
-
-  // Some browsers expose the PrintScreen key through keyup instead.
-  window.addEventListener("keyup", function (e) {
-    if (e.key === "PrintScreen" || e.code === "PrintScreen") {
-      showScreenshotWarning();
-    }
-  }, true);
-
-  // Browser print action is treated as a screenshot/copy warning.
-  window.addEventListener("beforeprint", showScreenshotWarning);
-
-  // Do not show the warning for normal page interaction.
-  // Right-click/copy blocking has intentionally been removed.
+    }, 100);
+  });
 })();
 </script>
-
 </body>
 </html>
